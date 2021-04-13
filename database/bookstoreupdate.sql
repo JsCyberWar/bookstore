@@ -106,7 +106,7 @@ CREATE TABLE `loaisach` (
   `tenLoai` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `moTa` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,6 +115,7 @@ CREATE TABLE `loaisach` (
 
 LOCK TABLES `loaisach` WRITE;
 /*!40000 ALTER TABLE `loaisach` DISABLE KEYS */;
+INSERT INTO `loaisach` VALUES (1,'comedy','khong'),(2,'action','hanhdong');
 /*!40000 ALTER TABLE `loaisach` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,7 +132,7 @@ CREATE TABLE `nhaxb` (
   `dia_chi` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lien_he` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -140,6 +141,7 @@ CREATE TABLE `nhaxb` (
 
 LOCK TABLES `nhaxb` WRITE;
 /*!40000 ALTER TABLE `nhaxb` DISABLE KEYS */;
+INSERT INTO `nhaxb` VALUES (1,'abc','105 bach dang','123456'),(2,'kim dong','144 au co','weqweqweqw');
 /*!40000 ALTER TABLE `nhaxb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -190,7 +192,7 @@ CREATE TABLE `sach` (
   CONSTRAINT `fk_sach_loaiSach` FOREIGN KEY (`loaiSach`) REFERENCES `loaisach` (`id`),
   CONSTRAINT `fk_sach_nxb` FOREIGN KEY (`nhaXB`) REFERENCES `nhaxb` (`id`),
   CONSTRAINT `fk_sach_tacgia` FOREIGN KEY (`tacGia`) REFERENCES `tacgia` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -199,6 +201,7 @@ CREATE TABLE `sach` (
 
 LOCK TABLES `sach` WRITE;
 /*!40000 ALTER TABLE `sach` DISABLE KEYS */;
+INSERT INTO `sach` VALUES (1,'def',1,1,1,2,5000,10),(2,'journey to the center of the earth',2,2,2,5,7000,5);
 /*!40000 ALTER TABLE `sach` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -215,7 +218,7 @@ CREATE TABLE `tacgia` (
   `gioiTinh` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ngaySinh` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,6 +227,7 @@ CREATE TABLE `tacgia` (
 
 LOCK TABLES `tacgia` WRITE;
 /*!40000 ALTER TABLE `tacgia` DISABLE KEYS */;
+INSERT INTO `tacgia` VALUES (1,'duc','nam','29/12/2000'),(2,'kien','nam','29/12/2000');
 /*!40000 ALTER TABLE `tacgia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,4 +268,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-13 13:14:00
+-- Dump completed on 2021-04-13 16:37:24
