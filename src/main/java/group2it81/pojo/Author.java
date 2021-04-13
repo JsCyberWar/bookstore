@@ -16,7 +16,7 @@ public class Author {
     private int id;
     private String hoTen;
     private String gioiTinh;
-    private Date ngaySinh;
+    private String ngaySinh;
 
     public String getHoTen() {
         return this.hoTen;
@@ -34,11 +34,11 @@ public class Author {
         this.gioiTinh = gioiTinh;
     }
 
-    public Date getNgaySinh() {
+    public String getNgaySinh() {
         return this.ngaySinh;
     }
 
-    public void setNgaySinh(Date ngaySinh) {
+    public void setNgaySinh(String ngaySinh) {
         this.ngaySinh = ngaySinh;
     };
 }

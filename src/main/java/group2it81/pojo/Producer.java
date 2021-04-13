@@ -1,5 +1,6 @@
 package group2it81.pojo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +14,9 @@ public class Producer {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;
     private String tenNXB;
+    @Column (name = "dia_chi")
     private String diaChi;
+    @Column (name = "lien_he")
     private String lienHe;
 
     public int getId() {

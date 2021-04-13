@@ -4,7 +4,9 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import group2it81.pojo.Book;
 import group2it81.pojo.User;
+import group2it81.service.BookService;
 import group2it81.service.DangNhapService;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -35,7 +37,12 @@ public class DangNhapController implements Initializable {
             msg = "Login success";
         }
 
-        System.out.println(msg);
+        BookService bs = new BookService();
+        List<Book> b = bs.loadBooks();
+        
+        for(Book book: b){
+            System.out.println(book.getTenSach());
+        }
         
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Login");
