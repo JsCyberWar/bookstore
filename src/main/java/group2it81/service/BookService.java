@@ -16,6 +16,5 @@ public class BookService {
             Query<Book> q = session.createQuery(hql);
             return q.list();
         }       
-    
-    
+    }
 }

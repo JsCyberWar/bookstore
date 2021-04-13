@@ -9,6 +9,8 @@ import group2it81.configs.HibernateUtils;
 import group2it81.pojo.User;
 
 public class DangNhapService {
+    public static String TEN_NV;
+    public static int ID_ROLE;
     public List<User> getUser(String username, String pass){
         String hql = String.format("FROM User user WHERE user.username = \"%s\" AND user.password = \"%s\"",username,pass);
         try(Session session = HibernateUtils.getSessionFactory().openSession()){

@@ -31,7 +31,7 @@ public class HibernateUtils {
         props.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
         props.put(Environment.URL, "jdbc:mysql://localhost:3306/bookstoredb");
         props.put(Environment.USER, "root");
-        props.put(Environment.PASS, "12345678");
+        props.put(Environment.PASS, "12345");
         props.put(Environment.SHOW_SQL, "true");
 
         conf.addAnnotatedClass(User.class);
