@@ -15,7 +15,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button fx:id="logout" layoutX="480.0" layoutY="10.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: #0000FF;" text="Đăng xuất" textFill="WHITE" onAction="#logout">
+            <Button fx:id="logout" layoutX="480.0" layoutY="10.0" mnemonicParsing="false" onAction="#exit" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: #0000FF;" text="Đăng xuất" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
