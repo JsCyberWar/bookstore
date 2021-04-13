@@ -9,7 +9,14 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
-import group2it81.pojo.NhanVien;
+import group2it81.pojo.Author;
+import group2it81.pojo.Bill;
+import group2it81.pojo.BillDetail;
+import group2it81.pojo.Book;
+import group2it81.pojo.BookType;
+import group2it81.pojo.Customer;
+import group2it81.pojo.Producer;
+import group2it81.pojo.Role;
 import group2it81.pojo.User;
 
 public class HibernateUtils {
@@ -24,12 +31,19 @@ public class HibernateUtils {
         props.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
         props.put(Environment.URL, "jdbc:mysql://localhost:3306/bookstoredb");
         props.put(Environment.USER, "root");
-        props.put(Environment.PASS, "12345");
+        props.put(Environment.PASS, "12345678");
         props.put(Environment.SHOW_SQL, "true");
 
         conf.addAnnotatedClass(User.class);
-        conf.addAnnotatedClass(NhanVien.class);
-        
+        conf.addAnnotatedClass(Role.class);
+        conf.addAnnotatedClass(Author.class);
+        conf.addAnnotatedClass(BookType.class);
+        conf.addAnnotatedClass(Producer.class);
+        conf.addAnnotatedClass(Book.class);
+        conf.addAnnotatedClass(Customer.class);
+        conf.addAnnotatedClass(Bill.class);
+        conf.addAnnotatedClass(BillDetail.class);
+
         conf.setProperties(props);
         
         ServiceRegistry registry = new StandardServiceRegistryBuilder()

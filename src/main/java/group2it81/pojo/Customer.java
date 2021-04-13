@@ -1,29 +1,20 @@
 package group2it81.pojo;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-/**
- *
- * @author kienluc
- */
 @Entity
-@Table (name = "nhanvien")
-public class NhanVien implements Serializable{
-    private static final long serialVersionUID = -1271708384930007651L;
-    
+@Table (name = "khachhang")
+public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;
     private String hoTen;
     private String gioiTinh;
-    private String ghiChu;
+    private String sdt;
 
     public int getId() {
         return this.id;
@@ -49,12 +40,12 @@ public class NhanVien implements Serializable{
         this.gioiTinh = gioiTinh;
     }
 
-    public String getGhiChu() {
-        return this.ghiChu;
+    public String getSdt() {
+        return this.sdt;
     }
 
-    public void setGhiChu(String ghiChu) {
-        this.ghiChu = ghiChu;
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
     }
 
 }

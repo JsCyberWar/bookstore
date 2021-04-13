@@ -6,12 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User implements Serializable {
     private static final long serialVersionUID = -6296266467719869628L;
     
@@ -20,6 +20,17 @@ public class User implements Serializable {
     private int id;
     private String username;
     private String password;
+    @ManyToOne
+    @JoinColumn (name = "role_id")
+    private Role role;
+
+    public Role getRole() {
+        return this.role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public int getId() {
         return this.id;
