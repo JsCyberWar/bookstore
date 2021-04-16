@@ -2,12 +2,15 @@ package group2it81.service;
 
 import java.util.List;
 
+<<<<<<< HEAD
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 
+=======
+>>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -21,6 +24,7 @@ public class BookService {
         try (Session session = HibernateUtils.getSessionFactory().openSession()){
             Query<Book> q = session.createQuery(hql);
             return q.list();
+<<<<<<< HEAD
         }
         
     }
@@ -53,4 +57,8 @@ public class BookService {
         return books;
     }
     
+=======
+        }       
+    }
+>>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
 }

@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 -- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
 -- Host: localhost    Database: bookstoredb
 -- ------------------------------------------------------
 -- Server version	8.0.22
+=======
+-- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: bookstoredb
+-- ------------------------------------------------------
+-- Server version	8.0.23
+>>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -78,9 +86,15 @@ DROP TABLE IF EXISTS `khachhang`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `khachhang` (
   `id` int NOT NULL AUTO_INCREMENT,
+<<<<<<< HEAD
   `hoTen` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `gioiTinh` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sdt` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+=======
+  `hoTen` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gioiTinh` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sdt` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+>>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -103,8 +117,13 @@ DROP TABLE IF EXISTS `loaisach`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `loaisach` (
   `id` int NOT NULL AUTO_INCREMENT,
+<<<<<<< HEAD
   `tenLoai` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `moTa` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+=======
+  `tenLoai` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `moTa` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+>>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -115,11 +134,49 @@ CREATE TABLE `loaisach` (
 
 LOCK TABLES `loaisach` WRITE;
 /*!40000 ALTER TABLE `loaisach` DISABLE KEYS */;
+<<<<<<< HEAD
 INSERT INTO `loaisach` VALUES (1,'comedy','khong'),(2,'action','hanhdong');
+=======
+>>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
 /*!40000 ALTER TABLE `loaisach` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
+<<<<<<< HEAD
+=======
+-- Table structure for table `nhanvien`
+--
+
+DROP TABLE IF EXISTS `nhanvien`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `nhanvien` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `ho` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ten` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sdt` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `queQuan` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ngaySinh` date DEFAULT NULL,
+  `id_role` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_unique` (`id`) /*!80000 INVISIBLE */,
+  KEY `fk_nhanvien_role_idx` (`id_role`),
+  CONSTRAINT `fk_nhanvien_role` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `nhanvien`
+--
+
+LOCK TABLES `nhanvien` WRITE;
+/*!40000 ALTER TABLE `nhanvien` DISABLE KEYS */;
+INSERT INTO `nhanvien` VALUES (1,'Le Duong','Duc','0123456789','DaLat','2000-04-28',0),(2,'Luc Tuan','Kien','01234567','Kien Giang','2021-04-21',0),(4,'Pham Trung','Kien','0152455','NhaTrang','2021-04-03',3);
+/*!40000 ALTER TABLE `nhanvien` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+>>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
 -- Table structure for table `nhaxb`
 --
 
@@ -128,9 +185,15 @@ DROP TABLE IF EXISTS `nhaxb`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `nhaxb` (
   `id` int NOT NULL AUTO_INCREMENT,
+<<<<<<< HEAD
   `tenNXB` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dia_chi` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lien_he` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+=======
+  `tenNXB` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dia_chi` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lien_he` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+>>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -141,7 +204,10 @@ CREATE TABLE `nhaxb` (
 
 LOCK TABLES `nhaxb` WRITE;
 /*!40000 ALTER TABLE `nhaxb` DISABLE KEYS */;
+<<<<<<< HEAD
 INSERT INTO `nhaxb` VALUES (1,'abc','105 bach dang','123456'),(2,'kim dong','144 au co','weqweqweqw');
+=======
+>>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
 /*!40000 ALTER TABLE `nhaxb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,7 +220,11 @@ DROP TABLE IF EXISTS `role`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `role` (
   `id` int NOT NULL,
+<<<<<<< HEAD
   `role_name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+=======
+  `role_name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+>>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -165,7 +235,11 @@ CREATE TABLE `role` (
 
 LOCK TABLES `role` WRITE;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
+<<<<<<< HEAD
 INSERT INTO `role` VALUES (1,'admin'),(2,'guest');
+=======
+INSERT INTO `role` VALUES (0,'Quan Ly'),(1,'Pho Quan Ly'),(2,'Truong Ca'),(3,'Nhan Vien Ban Hang');
+>>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,7 +252,11 @@ DROP TABLE IF EXISTS `sach`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sach` (
   `id` int NOT NULL AUTO_INCREMENT,
+<<<<<<< HEAD
   `tenSach` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+=======
+  `tenSach` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+>>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
   `loaiSach` int NOT NULL,
   `tacGia` int NOT NULL,
   `nhaXB` int NOT NULL,
@@ -201,7 +279,10 @@ CREATE TABLE `sach` (
 
 LOCK TABLES `sach` WRITE;
 /*!40000 ALTER TABLE `sach` DISABLE KEYS */;
+<<<<<<< HEAD
 INSERT INTO `sach` VALUES (1,'def',1,1,1,2,5000,10),(2,'journey to the center of the earth',2,2,2,5,7000,5);
+=======
+>>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
 /*!40000 ALTER TABLE `sach` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -214,9 +295,15 @@ DROP TABLE IF EXISTS `tacgia`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tacgia` (
   `id` int NOT NULL AUTO_INCREMENT,
+<<<<<<< HEAD
   `hoTen` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `gioiTinh` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ngaySinh` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+=======
+  `hoTen` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gioiTinh` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ngaySinh` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+>>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -227,7 +314,10 @@ CREATE TABLE `tacgia` (
 
 LOCK TABLES `tacgia` WRITE;
 /*!40000 ALTER TABLE `tacgia` DISABLE KEYS */;
+<<<<<<< HEAD
 INSERT INTO `tacgia` VALUES (1,'duc','nam','29/12/2000'),(2,'kien','nam','29/12/2000');
+=======
+>>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
 /*!40000 ALTER TABLE `tacgia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -240,6 +330,7 @@ DROP TABLE IF EXISTS `user`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
+<<<<<<< HEAD
   `username` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `role_id` int DEFAULT NULL,
@@ -247,6 +338,15 @@ CREATE TABLE `user` (
   KEY `fk_user_role_idx` (`role_id`),
   CONSTRAINT `fk_user_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+=======
+  `username` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_unique` (`id`),
+  UNIQUE KEY `username_UNIQUE` (`username`),
+  CONSTRAINT `fk_nhanvien_user` FOREIGN KEY (`id`) REFERENCES `nhanvien` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+>>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -255,7 +355,11 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+<<<<<<< HEAD
 INSERT INTO `user` VALUES (2,'kienluc','123',1);
+=======
+INSERT INTO `user` VALUES (1,'duc','123'),(2,'kienluc','123'),(4,'kien','123');
+>>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -268,4 +372,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+<<<<<<< HEAD
 -- Dump completed on 2021-04-13 16:37:24
+=======
+-- Dump completed on 2021-04-17  0:25:43
+>>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
