@@ -1,6 +1,9 @@
 package group2it81.pojo;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "sach")
-public class Book {
+public class Book implements Serializable {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;
@@ -20,15 +23,15 @@ public class Book {
     private int soLuongTon;
 
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn (name = "tacGia")
     private Author author;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn (name = "nhaXB")
     private Producer producer;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn (name = "loaiSach")
     private BookType type;
     

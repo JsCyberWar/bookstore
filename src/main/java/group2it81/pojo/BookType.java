@@ -1,5 +1,7 @@
 package group2it81.pojo;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,13 +10,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "loaisach")
-public class BookType {
+public class BookType implements Serializable {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private int id;
+    private int id; 
     private String tenLoai;
     private String moTa;
 
+    @Override
+    public String toString() {
+        return this.tenLoai;
+    }
     public int getId() {
         return this.id;
     }

@@ -1,5 +1,7 @@
 package group2it81.pojo;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "chitiethoadon")
-public class BillDetail {
+public class BillDetail implements Serializable {
     private int donGia;
     @Id
     @Column (name = "hoadon_id")

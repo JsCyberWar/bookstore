@@ -1,5 +1,6 @@
 package group2it81.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "hoadon")
-public class Bill {
+public class Bill implements Serializable{
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;

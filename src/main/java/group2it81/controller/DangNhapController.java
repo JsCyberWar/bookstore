@@ -33,15 +33,19 @@ public class DangNhapController implements Initializable {
         List<User> users = q.getUser(txtUserName.getText(), txtPass.getText());
         String msg = "Incorrect username or password";
 
-        if (users.size() > 0) {
+        if (!users.isEmpty()) {
             msg = "Login success";
         }
-
         BookService bs = new BookService();
         List<Book> b = bs.loadBooks();
         
         for(Book book: b){
             System.out.println(book.getTenSach());
+        }
+        List<Object[]> rs = bs.getBooksByKeyWord("def");
+        for(Object[] obj: rs){
+            System.out.printf("Ten sach: %s\nLan tai ban: %d\nDon gia: %d\nSo luong ton: %d\nLoai sach: %s", 
+            obj[0], obj[1], obj[2], obj[3], obj[4]);
         }
         
         Alert alert = new Alert(AlertType.CONFIRMATION);
