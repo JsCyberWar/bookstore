@@ -2,7 +2,6 @@ package group2it81.service;
 
 import java.util.List;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 

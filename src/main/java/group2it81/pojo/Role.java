@@ -5,7 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import java.util.Collection;
 
 
 @Entity
@@ -19,6 +22,16 @@ public class Role {
     @Column (name = "role_name")
     private String roleName;
 
+    @OneToMany(mappedBy = "role")
+    private Collection<NhanVien> nhanViens;
+
+    public Collection<NhanVien> getNhanViens() {
+        return this.nhanViens;
+    }
+
+    public void setNhanViens(Collection<NhanVien> nhanViens) {
+        this.nhanViens = nhanViens;
+    }
 
     
     public int getId() {

@@ -18,9 +18,10 @@ import group2it81.pojo.Customer;
 import group2it81.pojo.Producer;
 import group2it81.pojo.Role;
 import group2it81.pojo.User;
+import group2it81.pojo.NhanVien;
 
 public class HibernateUtils {
-    private final static SessionFactory FACTORY;
+    private static final SessionFactory FACTORY;
     
     static {
         Configuration conf = new Configuration();
@@ -36,13 +37,7 @@ public class HibernateUtils {
 
         conf.addAnnotatedClass(User.class);
         conf.addAnnotatedClass(Role.class);
-        conf.addAnnotatedClass(Author.class);
-        conf.addAnnotatedClass(BookType.class);
-        conf.addAnnotatedClass(Producer.class);
-        conf.addAnnotatedClass(Book.class);
-        conf.addAnnotatedClass(Customer.class);
-        conf.addAnnotatedClass(Bill.class);
-        conf.addAnnotatedClass(BillDetail.class);
+        conf.addAnnotatedClass(NhanVien.class);
 
         conf.setProperties(props);
         
@@ -52,7 +47,7 @@ public class HibernateUtils {
         FACTORY = conf.buildSessionFactory(registry);
     }
 
-    public static SessionFactory getSessionFactory(){
+    public static final SessionFactory getSessionFactory(){
         return FACTORY;
     }
 }

@@ -13,14 +13,9 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
+
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
-import javafx.stage.Stage;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+
 
 public class DangNhapController implements Initializable {
 
@@ -35,24 +30,19 @@ public class DangNhapController implements Initializable {
     @FXML
     private TextField txtPass;
 
+    SceneController switcher = new SceneController();
+
     public void login(ActionEvent event) throws IOException{
         DangNhapService q = new DangNhapService();
         List<User> users = q.getUser(txtUserName.getText(), txtPass.getText());
-        String msg = "Sai tên đăng nhập hoặc mật khẩu";
+        
 
         if (!users.isEmpty()) {
-            Parent home_page_parent = FXMLLoader.load(getClass().getResource("../../HomePage.fxml"));
-            Scene scene = new Scene(home_page_parent);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.hide();
-            stage.setScene(scene);
-            stage.show();
+            DangNhapService.ID_ROLE = users.get(0).getNhanVien().getRole().getId();
+            DangNhapService.TEN_NV = users.get(0).getNhanVien().getHo() + " " + users.get(0).getNhanVien().getTen();
+            switcher.switchScene("HomePage", event);
         } else {
-            Alert alert = new Alert(AlertType.CONFIRMATION);
-            alert.setTitle("Đăng nhập");
-            alert.setHeaderText(null);
-            alert.setContentText(msg);
-            alert.showAndWait();
+            switcher.createAlert("Sai tên đăng nhập hoặc mật khẩu", "Đăng nhập");
         }
 
         BookService bs = new BookService();

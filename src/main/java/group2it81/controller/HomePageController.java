@@ -2,13 +2,9 @@ package group2it81.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
-import javafx.scene.Node;
+import javafx.scene.control.Button;
 
 import java.io.IOException;
 import java.net.URL;
@@ -16,25 +12,53 @@ import java.util.ResourceBundle;
 
 import group2it81.service.DangNhapService;
 
-
-
 public class HomePageController implements Initializable {
 
     @FXML
     private Label lblTenNv;
 
+    @FXML
+    private Button btnQuanLyNV;
+
+    @FXML
+    private Button btnQuanLyKho;
+
+    @FXML
+    private Button btnBanSach;
+
+    @FXML
+    private Button btnThongKe;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        lblTenNv.setText(" ");
+        lblTenNv.setText(DangNhapService.TEN_NV);
+
+        switch (DangNhapService.ID_ROLE) {
+            case 0:
+                break;
+            case 1:
+                btnQuanLyNV.setDisable(true);
+                break;
+            case 2:
+                btnQuanLyNV.setDisable(true);
+                btnThongKe.setDisable(true);
+                break;
+            default:
+                btnQuanLyNV.setDisable(true);
+                btnThongKe.setDisable(true);
+                btnQuanLyKho.setDisable(true);
+                break;
+        }
     }
 
-    public void logout(ActionEvent event) throws IOException{
-        Parent home_page_parent = FXMLLoader.load(getClass().getResource("../../DangNhap.fxml"));
-        Scene scene = new Scene(home_page_parent);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.hide();
-        stage.setScene(scene);
-        stage.show();
+    SceneController switcher = new SceneController();
+
+    public void logout(ActionEvent event) throws IOException {
+        switcher.switchScene("DangNhap", event);
+    }
+
+    public void quanLyNhanVien(ActionEvent event) throws IOException {
+        switcher.switchScene("QLNV", event);
     }
 
 }

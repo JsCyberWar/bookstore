@@ -15,7 +15,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button fx:id="logout" layoutX="480.0" layoutY="10.0" mnemonicParsing="false" onAction="#exit" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: #0000FF;" text="Đăng xuất" textFill="WHITE">
+            <Button fx:id="logout" layoutX="480.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: #0000FF;" text="Đăng xuất" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -26,17 +26,22 @@
    <center>
       <Pane prefHeight="330.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="79.0" layoutY="91.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="442.0" style="-fx-background-color: #0000FF;" text="Bán sách" textFill="WHITE">
+            <Button fx:id="btnBanSach" layoutX="79.0" layoutY="60.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="442.0" style="-fx-background-color: #0000FF;" text="Bán sách" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="79.0" layoutY="151.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="442.0" style="-fx-background-color: #0000FF;" text="Quản lý kho" textFill="WHITE">
+            <Button fx:id="btnQuanLyKho" layoutX="79.0" layoutY="120.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="442.0" style="-fx-background-color: #0000FF;" text="Quản lý kho" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="79.0" layoutY="210.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="442.0" style="-fx-background-color: #0000FF;" text="Thống kê" textFill="WHITE">
+            <Button fx:id="btnQuanLyNV" layoutX="79.0" layoutY="179.0" mnemonicParsing="false" onAction="#quanLyNhanVien" prefHeight="42.0" prefWidth="442.0" style="-fx-background-color: #0000FF;" text="Quản lý nhân viên" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnThongKe" layoutX="79.0" layoutY="243.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="442.0" style="-fx-background-color: #0000FF;" text="Thống kê" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
