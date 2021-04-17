@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -22,7 +23,7 @@ public class Role {
     @Column (name = "role_name")
     private String roleName;
 
-    @OneToMany(mappedBy = "role")
+    @OneToMany(mappedBy = "role", fetch = FetchType.EAGER)
     private Collection<NhanVien> nhanViens;
 
     public Collection<NhanVien> getNhanViens() {

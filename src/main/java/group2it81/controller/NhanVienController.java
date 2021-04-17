@@ -1,6 +1,7 @@
 package group2it81.controller;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,15 +17,18 @@ import java.net.URL;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ResourceBundle;
+
 import group2it81.pojo.NhanVienDetails;
 import group2it81.pojo.NhanVien;
 import group2it81.pojo.User;
+import group2it81.pojo.Role;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableColumn;
 
 
 import group2it81.service.NhanVienService;
+
 
 public class NhanVienController implements Initializable {
     @FXML
@@ -97,6 +101,13 @@ public class NhanVienController implements Initializable {
         table.setItems(oblist);
 
         txtSearch.clear();
+
+        List<Role> listRole = nv.searchRole();
+        ArrayList<NhanVien> nhanVienCollection = new ArrayList<>(listRole.get(0).getNhanViens());
+
+        for(NhanVien nVien : nhanVienCollection){
+            System.out.println(nVien.getTen());
+        }
     }
 
     public void themNhanVien() {
