@@ -1,11 +1,13 @@
 package group2it81.controller;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.io.IOException;
 
 import group2it81.pojo.Book;
+import group2it81.pojo.BookType;
 import group2it81.pojo.User;
 import group2it81.service.BookService;
 import group2it81.service.DangNhapService;
@@ -13,8 +15,9 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 
 public class DangNhapController implements Initializable {
@@ -36,41 +39,17 @@ public class DangNhapController implements Initializable {
         DangNhapService q = new DangNhapService();
         List<User> users = q.getUser(txtUserName.getText(), txtPass.getText());
         
-
+        String msg = "";
         if (!users.isEmpty()) {
-<<<<<<< HEAD
-            msg = "Login success";
-=======
             DangNhapService.ID_ROLE = users.get(0).getNhanVien().getRole().getId();
             DangNhapService.TEN_NV = users.get(0).getNhanVien().getHo() + " " + users.get(0).getNhanVien().getTen();
             switcher.switchScene("HomePage", event);
         } else {
             switcher.createAlert("Sai tên đăng nhập hoặc mật khẩu", "Đăng nhập");
->>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
-        }
-        BookService bs = new BookService();
-        List<Book> b = bs.loadBooks();
-        
-        for(Book book: b){
-            System.out.println(book.getTenSach());
-        }
-<<<<<<< HEAD
-        List<Object[]> rs = bs.getBooksByKeyWord("def");
-        for(Object[] obj: rs){
-            System.out.printf("Ten sach: %s\nLan tai ban: %d\nDon gia: %d\nSo luong ton: %d\nLoai sach: %s", 
-            obj[0], obj[1], obj[2], obj[3], obj[4]);
-        }
-        
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Login");
-        alert.setHeaderText(null);
-        alert.setContentText(msg);
-        alert.showAndWait();
-=======
->>>>>>> 5cba52ed8b770d5504e8ee4428abf9adc711f0f4
 
+        }        
     }
-
+    
     public void exit() {
         Platform.exit();
     }

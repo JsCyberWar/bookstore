@@ -1,6 +1,8 @@
 package group2it81.pojo;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table (name = "sach")
@@ -33,7 +36,15 @@ public class Book implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn (name = "loaiSach")
-    private BookType type;
+    private BookType loaisach;
+
+    public BookType getLoaisach() {
+        return this.loaisach;
+    }
+
+    public void setLoaisach(BookType loaisach) {
+        this.loaisach = loaisach;
+    }
     
     public Author getAuthor() {
         return this.author;
@@ -91,15 +102,6 @@ public class Book implements Serializable {
 
     public void setProducer(Producer producer) {
         this.producer = producer;
-    }
-
-
-    public BookType getType() {
-        return this.type;
-    }
-
-    public void setType(BookType type) {
-        this.type = type;
     }
 
 

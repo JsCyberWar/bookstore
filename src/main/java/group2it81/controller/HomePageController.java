@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.swing.Action;
+
 import group2it81.service.DangNhapService;
 
 public class HomePageController implements Initializable {
@@ -60,5 +62,13 @@ public class HomePageController implements Initializable {
     public void quanLyNhanVien(ActionEvent event) throws IOException {
         switcher.switchScene("QLNV", event);
     }
-
+    public void quanLyKho(ActionEvent event) throws IOException{
+        switcher.switchScene("QLKho", event);
+    }
+    public void banSach(ActionEvent event) throws IOException{
+        switcher.switchScene("BanSach", event);
+    }
+    public void thongKe(ActionEvent event) throws IOException{
+        switcher.switchScene("ThongKe", event);
+    }
 }

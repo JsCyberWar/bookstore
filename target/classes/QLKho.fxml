@@ -1,67 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="892.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenproject1.QLKhoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="892.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group2it81.controller.QLKhoController">
    <top>
-      <Label alignment="CENTER" prefHeight="27.0" prefWidth="968.0" style="-fx-background-color: #000;" text="Quản lý kho sách" textFill="WHITE" BorderPane.alignment="CENTER">
+      <Label alignment="CENTER" prefHeight="27.0" prefWidth="968.0" style="-fx-background-color: #FF6600;" text="Quản lý kho sách" textFill="WHITE" BorderPane.alignment="CENTER">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pic/e244e9c7847dc07bcd6f74cab045c98f.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Label>
    </top>
    <center>
       <Pane prefHeight="469.0" prefWidth="302.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane layoutX="41.0" layoutY="81.0">
+            <Pane layoutX="26.0" layoutY="90.0" prefHeight="303.0" prefWidth="210.0">
                <children>
-                  <TextField prefHeight="25.0" prefWidth="220.0" promptText="Tựa Sách" />
-                  <TextField layoutY="42.0" prefHeight="25.0" prefWidth="220.0" promptText="Tác giả" />
-                  <TextField layoutY="84.0" prefHeight="25.0" prefWidth="220.0" promptText="Thể loại" />
-                  <TextField layoutY="129.0" prefHeight="25.0" prefWidth="220.0" promptText="Giá" />
-                  <TextField layoutY="171.0" prefHeight="25.0" prefWidth="220.0" promptText="Số lượng nhập" />
+                  <TextField fx:id="txtName" layoutY="2.0" prefHeight="23.0" prefWidth="220.0" promptText="Tựa Sách">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></TextField>
+                  <ChoiceBox fx:id="cbAuthor" layoutY="56.0" prefHeight="25.0" prefWidth="220.0" />
+                  <ChoiceBox fx:id="cbBookType" layoutY="98.0" prefHeight="25.0" prefWidth="220.0" />
+                  <ChoiceBox fx:id="cbProducer" layoutY="152.0" prefHeight="25.0" prefWidth="220.0" />
+                  <TextField fx:id="txtPrice" layoutY="201.0" prefHeight="25.0" prefWidth="220.0" promptText="Giá">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtAmount" layoutY="243.0" prefHeight="25.0" prefWidth="220.0" promptText="Số lượng">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></TextField>
+                  <Label layoutX="6.0" layoutY="81.0" text="Thể loại" textFill="#aaa3a3">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label layoutX="8.0" layoutY="39.0" text="Tác giả" textFill="#aaa3a3">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label layoutX="1.0" layoutY="135.0" text="NXB" textFill="#aaa3a3">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtRepublish" layoutY="277.0" prefHeight="25.0" prefWidth="220.0" promptText="Lần tái bản">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </TextField>
                </children>
             </Pane>
-            <Button layoutX="35.0" layoutY="351.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="108.0" text="Nhập " />
-            <Button layoutX="160.0" layoutY="351.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="108.0" text="Huỷ" />
-            <Label alignment="CENTER" layoutX="79.0" layoutY="14.0" prefHeight="33.0" prefWidth="135.0" style="-fx-background-color: #c0c0c0;" text="Nhập Sách">
+            <Button layoutX="46.0" layoutY="409.0" mnemonicParsing="false" onAction="#inputBook" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: #FF6600;" text="Nhập " textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button layoutX="155.0" layoutY="409.0" mnemonicParsing="false" onAction="#clearInfo" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: #FF6600;" text="Huỷ" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Label alignment="CENTER" layoutX="59.0" layoutY="8.0" prefHeight="33.0" prefWidth="135.0" style="-fx-background-color: #c0c0c0;" text="Nhập Sách">
+               <font>
+                  <Font name="System Bold" size="15.0" />
                </font>
             </Label>
          </children>
       </Pane>
    </center>
    <left>
-      <Pane prefHeight="486.0" prefWidth="589.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="444.0" prefWidth="629.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView layoutX="14.0" layoutY="14.0" prefHeight="455.0" prefWidth="551.0">
+            <TableView fx:id="table" prefHeight="446.0" prefWidth="634.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="STT" />
-                <TableColumn prefWidth="75.0" text="Tựa Sách" />
-                  <TableColumn prefWidth="126.0" text="Tác giả" />
-                  <TableColumn prefWidth="72.0" text="Thể loại" />
-                  <TableColumn prefWidth="100.0" text="Giá" />
-                  <TableColumn prefWidth="100.0" text="Số lượng tồn" />
+                <TableColumn fx:id="colId" prefWidth="36.79998970031738" text="STT" />
+                <TableColumn fx:id="colName" prefWidth="124.79998016357422" text="Tựa Sách" />
+                  <TableColumn fx:id="colAuthor" prefWidth="108.79998779296875" text="Tác giả" />
+                  <TableColumn fx:id="colBookType" prefWidth="79.20001220703125" text="Thể loại" />
+                  <TableColumn fx:id="colPrice" prefWidth="100.0" text="Giá" />
+                  <TableColumn fx:id="colAmount" prefWidth="80.80007934570312" text="Số lượng tồn" />
+                  <TableColumn fx:id="colProducer" prefWidth="101.5999755859375" text="NXB" />
               </columns>
             </TableView>
          </children>
       </Pane>
    </left>
    <bottom>
-      <Pane prefHeight="130.0" prefWidth="967.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="56.0" prefWidth="892.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="208.0" layoutY="36.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="108.0" text="Xoá Sách" />
-            <Button layoutX="356.0" layoutY="36.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="108.0" text="Sửa " />
-            <Button layoutX="504.0" layoutY="36.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="108.0" text="Xuất phiếu nhập" />
-            <Button layoutX="651.0" layoutY="36.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="108.0" text="Huỷ" />
+            <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #FF6600;" text="Xoá Sách" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button layoutX="101.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" style="-fx-background-color: #FF6600;" text="Sửa " textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button layoutX="168.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" style="-fx-background-color: #FF6600;" text="Xuất phiếu nhập" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button layoutX="302.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" style="-fx-background-color: #FF6600;" text="Huỷ" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button layoutX="800.0" layoutY="15.0" mnemonicParsing="false" onAction="#backHomePage" prefHeight="25.0" prefWidth="69.0" style="-fx-background-color: #FF6600;" text="Quay lại" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
          </children></Pane>
    </bottom>
 </BorderPane>

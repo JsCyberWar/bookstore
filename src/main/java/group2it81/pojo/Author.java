@@ -15,6 +15,15 @@ public class Author implements Serializable {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private String hoTen;
     private String gioiTinh;
     private Date ngaySinh;

@@ -1,11 +1,14 @@
 package group2it81.pojo;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +19,17 @@ public class BookType implements Serializable {
     private int id; 
     private String tenLoai;
     private String moTa;
+
+    @OneToMany (mappedBy = "loaisach", fetch = FetchType.EAGER)
+    private Collection<Book> books;
+
+    public Collection<Book> getBooks() {
+        return this.books;
+    }
+
+    public void setBooks(Collection<Book> books) {
+        this.books = books;
+    }
 
     @Override
     public String toString() {

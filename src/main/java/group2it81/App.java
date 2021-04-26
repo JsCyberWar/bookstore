@@ -17,7 +17,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../DangNhap.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../BanSach.fxml"));
 
         scene = new Scene(root);
         stage.setTitle("BookStore Management");       

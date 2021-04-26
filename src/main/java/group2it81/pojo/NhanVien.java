@@ -103,12 +103,6 @@ public class NhanVien {
         this.role = role;
     }
 
-    public NhanVien(String ho, String ten, String sdt, String queQuan, Timestamp ngaySinh){
-        this.ho = ho;
-        this.ten = ten;
-        this.sdt = sdt;
-        this. queQuan = queQuan;
-        this.ngaySinh = ngaySinh;
-    } 
-
+     
+    
 }

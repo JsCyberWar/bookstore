@@ -12,6 +12,8 @@ import javafx.scene.control.Alert.AlertType;
 
 import java.io.IOException;
 
+import javax.swing.Action;
+
 public class SceneController  {
     public void switchScene(String fxml, ActionEvent event) throws IOException {
         Parent home_page_parent = FXMLLoader.load(getClass().getResource("../../"+ fxml + ".fxml"));
