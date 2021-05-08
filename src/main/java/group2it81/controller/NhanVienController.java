@@ -1,7 +1,7 @@
 package group2it81.controller;
 
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,7 +10,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ButtonBar;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,14 +25,13 @@ import java.util.ResourceBundle;
 import group2it81.pojo.NhanVienDetails;
 import group2it81.pojo.NhanVien;
 import group2it81.pojo.User;
-import group2it81.pojo.Role;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Pair;
 import javafx.scene.control.TableColumn;
 
-
 import group2it81.service.NhanVienService;
-
 
 public class NhanVienController implements Initializable {
     @FXML
@@ -65,6 +68,7 @@ public class NhanVienController implements Initializable {
     private PasswordField txtPass;
 
     SceneController switcher = new SceneController();
+    NhanVienService nv = new NhanVienService();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -72,7 +76,6 @@ public class NhanVienController implements Initializable {
     }
 
     public void getListNhanVien() {
-        NhanVienService nv = new NhanVienService();
         List<NhanVien> listNhanVien = nv.searchNhanVien(txtSearch.getText());
 
         ObservableList<NhanVienDetails> oblist = FXCollections.observableArrayList();
@@ -101,13 +104,6 @@ public class NhanVienController implements Initializable {
         table.setItems(oblist);
 
         txtSearch.clear();
-
-        List<Role> listRole = nv.searchRole();
-        ArrayList<NhanVien> nhanVienCollection = new ArrayList<>(listRole.get(0).getNhanViens());
-
-        for(NhanVien nVien : nhanVienCollection){
-            System.out.println(nVien.getTen());
-        }
     }
 
     public void themNhanVien() {
@@ -119,22 +115,19 @@ public class NhanVienController implements Initializable {
             nhanVienMoi.setSdt(txtSDT.getText());
             nhanVienMoi.setQueQuan(txtqueQuan.getText());
             nhanVienMoi.setNgaySinh(Timestamp.valueOf(txtngaySinh.getValue().atStartOfDay()));
-            
+
             User userMoi = new User();
             userMoi.setUsername(txtUsername.getText());
             userMoi.setPassword(txtPass.getText());
 
             nhanVienMoi.setUser(userMoi);
 
-            NhanVienService sv = new NhanVienService();
-            sv.addNhanVien(nhanVienMoi);
-            
+            nv.addNhanVien(nhanVienMoi);
+
             msg = "Thêm nhân viên thành công";
-            
-        } catch (Exception ex){
-            if(ex.getClass() == NullPointerException.class){
+
+        } catch (Exception ex) {
                 msg = "Phải điền đầy đủ thông tin";
-            }
         } finally {
             switcher.createAlert(msg, "Thêm Nhân Viên");
 
@@ -146,11 +139,23 @@ public class NhanVienController implements Initializable {
             txtUsername.clear();
             txtPass.clear();
         }
-        
+
     }
 
-    public void exit(ActionEvent event) throws IOException{
+    public void exit(ActionEvent event) throws IOException {
         switcher.switchScene("HomePage", event);
+    }
+
+    public void xoaNhanVien() {
+        Alert alert = new Alert(Alert.AlertType.WARNING, "Bạn có chắc muốn xóa nhân viên này ?", ButtonType.YES, ButtonType.NO);
+        alert.setHeaderText(null);
+        alert.setTitle("Thông báo");
+        ButtonType result = alert.showAndWait().orElse(ButtonType.YES);
+        
+        if (ButtonType.YES.equals(result)) {
+            nv.xoaNhanVien(table.getSelectionModel().getSelectedItem().getId());
+            table.getItems().remove(table.getSelectionModel().getSelectedItem());
+        }
     }
 
 }

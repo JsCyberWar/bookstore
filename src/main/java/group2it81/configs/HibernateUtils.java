@@ -9,13 +9,6 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
-import group2it81.pojo.Author;
-import group2it81.pojo.Bill;
-import group2it81.pojo.BillDetail;
-import group2it81.pojo.Book;
-import group2it81.pojo.BookType;
-import group2it81.pojo.Customer;
-import group2it81.pojo.Producer;
 import group2it81.pojo.Role;
 import group2it81.pojo.User;
 import group2it81.pojo.NhanVien;

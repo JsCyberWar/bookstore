@@ -10,10 +10,7 @@ import org.hibernate.Session;
 
 import group2it81.configs.HibernateUtils;
 import group2it81.pojo.NhanVien;
-import group2it81.pojo.User;
 import group2it81.pojo.Role;
-
-import org.hibernate.query.Query;
 
 public class NhanVienService {
     public List<NhanVien> searchNhanVien(String keyWord){
@@ -45,11 +42,14 @@ public class NhanVienService {
         }
     }
 
-    public List<Role> searchRole() {
-        String hql = "FROM Role role WHERE role.roleName = 'Quan Ly'";
+    public void xoaNhanVien(int idNhanVien){
         try(Session session = HibernateUtils.getSessionFactory().openSession()){
-            Query<Role> query = session.createQuery(hql);
-            return query.list();
+            session.getTransaction().begin();
+            NhanVien nhanVien = new NhanVien();
+            nhanVien = (NhanVien) session.get(NhanVien.class,idNhanVien);
+            session.delete(nhanVien);
+            session.getTransaction().commit();
         }
     }
+
 }
