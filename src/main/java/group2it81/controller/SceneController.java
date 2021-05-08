@@ -12,7 +12,6 @@ import javafx.scene.control.Alert.AlertType;
 
 import java.io.IOException;
 
-import javax.swing.Action;
 
 public class SceneController  {
     public void switchScene(String fxml, ActionEvent event) throws IOException {
@@ -21,6 +20,7 @@ public class SceneController  {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.hide();
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 

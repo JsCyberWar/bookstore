@@ -37,6 +37,7 @@ public class QLKhoController implements Initializable {
         loadData();
     }
 
+    //Components
     AuthorService ats = new AuthorService();
     List<Author> rsAuthors = ats.getAuthor();
     BookTypeService bts = new BookTypeService();
@@ -45,9 +46,15 @@ public class QLKhoController implements Initializable {
     List<Producer> rsProducers = pds.getProducer();
     BookService bs = new BookService();
     
+    //Switch scene and create an alert
     SceneController switcher = new SceneController();
     
-
+    //ID for searching
+    private int id_author;
+    private int id_bookType;
+    private int id_producer;
+    
+    //Properties in Scene Builder
     @FXML
     private ChoiceBox<String> cbAuthor;
     @FXML
@@ -62,11 +69,6 @@ public class QLKhoController implements Initializable {
     private TextField txtAmount;
     @FXML
     private TextField txtRepublish;
-
-    private int id_author;
-    private int id_bookType;
-    private int id_producer;
-
 
     @FXML
     private TableView<BookDetail> table;
@@ -85,7 +87,8 @@ public class QLKhoController implements Initializable {
     @FXML
     private TableColumn<BookDetail, String> colProducer;
 
-     public void inputBook(ActionEvent event) throws IOException{
+    //Add a book into tableview and database
+    public void inputBook(ActionEvent event) throws IOException{
         try {
             
             Book sach = new Book();
@@ -121,7 +124,8 @@ public class QLKhoController implements Initializable {
             switcher.createAlert("Phải nhập đầy đủ thông tin sách", "Thông báo");
         }
                     
-    }  
+    }
+    //Clear input information of book   
     public void clearInfo(ActionEvent event) throws IOException{
             txtName.clear();
             txtAmount.clear();
@@ -132,7 +136,7 @@ public class QLKhoController implements Initializable {
             cbProducer.setValue(null);
     }
     private void loadData(){
-        
+        //load Author - Category - Publisher
         ObservableList<String> oblistAuth = FXCollections.observableArrayList();
         for(Author a: rsAuthors){
             oblistAuth.addAll(a.getHoTen());
@@ -152,7 +156,7 @@ public class QLKhoController implements Initializable {
         }
         cbProducer.setItems(oblistProducer);
 
-
+        //load list of Book into tableview
         List<Book> rsBooks = bs.loadBooks();
         ObservableList<BookDetail> oblistBook = FXCollections.observableArrayList();
         rsBooks.forEach(book ->{
@@ -175,11 +179,17 @@ public class QLKhoController implements Initializable {
         colName.setCellValueFactory(new PropertyValueFactory<BookDetail, String>("tenSach"));
         colPrice.setCellValueFactory(new PropertyValueFactory<BookDetail, Integer>("gia"));
         colProducer.setCellValueFactory(new PropertyValueFactory<BookDetail, String>("nxb"));
-
+        
         table.setItems(oblistBook);
     }
     
-
+    //Delete book from tableview and database
+    public void deleteBook(){       
+        bs.deleteBook(table.getSelectionModel().getSelectedItem().getId());
+        table.getItems().remove(table.getSelectionModel().getSelectedItem());
+        switcher.createAlert("Xoa thanh cong", "Thong bao");
+        loadData();
+    }
     public void backHomePage(ActionEvent event) throws IOException{
         switcher.switchScene("HomePage", event);
     }

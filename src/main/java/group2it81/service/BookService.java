@@ -1,13 +1,6 @@
 package group2it81.service;
 
 import java.util.List;
-
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -26,11 +19,28 @@ public class BookService {
         }
         
     }
-   
-    public List<BookType> searchBookByKeyWord(String kw){
-        String hql = String.format("FROM BookType type WHERE type.tenLoai like '%%%s%%'", kw);
+    
+    public List<Book> searchBookByKeyWord(String kw){
+        String hqlBook = String.format("FROM Book book WHERE book.tenSach like '%%%s%%'", kw);
+        String hqlCat = String.format("FROM BookType type WHERE type.tenLoai like '%%%s%%'", kw);
         try (Session session = HibernateUtils.getSessionFactory().openSession()){
-            Query<BookType> query = session.createQuery(hql);
+            List<BookType> listBookFromCat = session.createQuery(hqlCat).list();
+            List<Book> listBook = session.createQuery(hqlBook).list();
+            
+            listBookFromCat.forEach(typeBook ->{
+                typeBook.getBooks().forEach(book ->{
+                    if(!listBook.contains(book))
+                        listBook.add(book);
+                });
+            });
+            return listBook;
+        }
+    }
+
+    public List<Book> searchBookByName(String kw){
+        String hql = String.format("FROM Book book WHERE book.tenSach like '%%%s%%'", kw);
+        try(Session session = HibernateUtils.getSessionFactory().openSession()){
+            Query<Book> query = session.createQuery(hql);
             return query.list();
         }
     }
@@ -64,5 +74,20 @@ public class BookService {
             }       
         }
         return true;           
-    }            
+    }  
+    public Boolean deleteBook(int id_book){
+        try(Session session = HibernateUtils.getSessionFactory().openSession()){
+            try{
+                session.getTransaction().begin();
+                Book b = new Book();
+                b = (Book) session.get(Book.class, id_book);
+                session.delete(b);
+                session.getTransaction().commit();
+            }catch(Exception ex){
+                session.getTransaction().rollback();
+                return false;
+            }
+        }
+        return true;
+    }          
 }

@@ -52,11 +52,24 @@
         <version>8.0.23</version>
     </dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>5.7.0-M1</version>
+        <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <version>5.7.0-M1</version>
+      <scope>test</scope>
+      </dependency>
+      <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-runner</artifactId>
+      <version>1.7.0-M1</version>
+      <scope>test</scope>
+      <type>jar</type>
+      </dependency>
   </dependencies>
 
   <build>

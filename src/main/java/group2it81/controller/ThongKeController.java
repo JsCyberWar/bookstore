@@ -1,15 +1,17 @@
 package group2it81.controller;
 
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,16 +19,14 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
+import group2it81.service.BillService;
+
 public class ThongKeController implements Initializable {
     
     String timeStamp = new SimpleDateFormat("yyyy").format(Calendar.getInstance().getTime());
     
     @FXML
-    private BarChart<?, ?> reportChart;
-    @FXML
-    private CategoryAxis xThang;
-    @FXML
-    private NumberAxis yDoanhThu;
+    private BarChart<String, Integer> reportChart;
 
     @FXML
     private ChoiceBox<String> cbChoice;
@@ -37,27 +37,16 @@ public class ThongKeController implements Initializable {
     @FXML
     private ChoiceBox<Integer> cbYear;
 
+    BillService billService = new BillService();
+    XYChart.Series<String, Integer> st = new XYChart.Series<String, Integer>();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //Test with loading data to Bar Chart
-        XYChart.Series st = new XYChart.Series<>();
-        st.getData().add(new XYChart.Data("Thang 1", 500));
-        st.getData().add(new XYChart.Data("Thang 2", 524));
-        st.getData().add(new XYChart.Data("Thang 3", 478));
-        st.getData().add(new XYChart.Data("Thang 4", 320));
-        st.getData().add(new XYChart.Data("Thang 5", 600));
-
-        reportChart.getData().addAll(st);
-
+        //Test with loading data to Bar Chart                
         loadData();
-        System.out.println(timeStamp);
     }
     
     
     public void loadData(){
-        ObservableList<String> oblistChoice = FXCollections.observableArrayList();
-        oblistChoice.addAll("Tháng", "Năm");
-        cbChoice.setItems(oblistChoice);
 
         ObservableList<Integer> oblistMonth = FXCollections.observableArrayList();
         oblistMonth.addAll(1,2,3,4,5,6,7,8,9,10,11,12);
@@ -65,12 +54,25 @@ public class ThongKeController implements Initializable {
         cbToMonth.setItems(oblistMonth);
         
         ObservableList<Integer> oblistYear = FXCollections.observableArrayList();
-        for(int i = 2000; i <= Integer.parseInt(timeStamp); i++){
+        for(int i = 2018; i <= Integer.parseInt(timeStamp); i++){
             oblistYear.addAll(i);
         }
         cbYear.setItems(oblistYear);
     }
-   
+    
+    public void revenue(){
+        st.getData().clear();
+        reportChart.getData().clear();
+        
+        st.setName(Integer.toString(cbYear.getValue()));
+        
+        for(int i = cbFromMonth.getValue(); i <= cbToMonth.getValue(); i++) {            
+            String thang = String.format("Thang %d", i);
+            st.getData().add(new XYChart.Data<String, Integer>(thang, billService.countRevenue(i, cbYear.getValue()).intValue()));          
+        }
+        reportChart.getData().add(st);
+        
+    }
     SceneController switcher = new SceneController();
     public void backHomePage(ActionEvent event) throws IOException{
         switcher.switchScene("HomePage", event);

@@ -15,7 +15,6 @@ public class Customer implements Serializable{
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;
     private String hoTen;
-    private String gioiTinh;
     private String sdt;
 
     public int getId() {
@@ -34,13 +33,6 @@ public class Customer implements Serializable{
         this.hoTen = hoTen;
     }
 
-    public String getGioiTinh() {
-        return this.gioiTinh;
-    }
-
-    public void setGioiTinh(String gioiTinh) {
-        this.gioiTinh = gioiTinh;
-    }
 
     public String getSdt() {
         return this.sdt;

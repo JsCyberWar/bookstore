@@ -9,8 +9,7 @@ import org.hibernate.criterion.Criterion;
 import org.hibernate.Session;
 
 import group2it81.configs.HibernateUtils;
-import group2it81.pojo.NhanVien;
-import group2it81.pojo.User;
+import group2it81.pojo.NhanVien;   
 import group2it81.pojo.Role;
 
 public class NhanVienService {
