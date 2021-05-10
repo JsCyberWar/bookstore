@@ -9,20 +9,17 @@ import org.junit.jupiter.api.Test;
 import group2it81.pojo.Book;
 import group2it81.service.BookService;
 
-public class TestCase1 {
+public class TestCase5 {
     @Test
     public void test1(){
         BookService bs = new BookService();
-        List<Book> rsBooks = bs.searchBookByName("Avenger");
-        Book b = rsBooks.get(0);
-        assertTrue(b.getTenSach().contains("Avenger"));
+        List<Book> rsBooks = bs.searchBookByKeyWord("comedy");
+        assertTrue(rsBooks.size() > 0);
     }
-    
     @Test
     public void test2(){
         BookService bs = new BookService();
-        List<Book> rsBooks = bs.searchBookByName("and");
-        Book b = rsBooks.get(0);
-        assertTrue(b.getTenSach().contains("and"));
+        List<Book> rsBooks = bs.searchBookByKeyWord("");
+        assertTrue(rsBooks.size() == 0);
     }
 }

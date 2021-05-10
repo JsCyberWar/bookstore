@@ -1,8 +1,6 @@
 package group2it81.pojo;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

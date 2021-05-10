@@ -8,6 +8,6 @@ import org.junit.jupiter.api.Test;
 import group2it81.pojo.BookType;
 import group2it81.service.BookService;
 
-public class TestCase2 {
+public class TestCase6 {
     
 }
