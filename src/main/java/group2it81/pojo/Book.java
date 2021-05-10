@@ -48,8 +48,8 @@ public class Book implements Serializable {
         return this.author;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setAuthor(Author author2) {
+        this.author = author2;
     }
 
     public int getId() {

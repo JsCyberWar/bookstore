@@ -8,11 +8,11 @@ import org.junit.jupiter.api.Test;
 import group2it81.pojo.Book;
 import group2it81.service.BookService;
 
-public class TestCase6 {
+public class TestCase7 {
     @Test
-    public void test1(){
+    public void test7(){
         BookService bs = new BookService();
-        List<Book> rsBooks = bs.searchBookByKeyWord("");
-        assertTrue(rsBooks.size() == 0);
+        List<Book> rsBooks = bs.searchBookByName("Anabel");
+        assertTrue(rsBooks.size() > 0);
     }
 }

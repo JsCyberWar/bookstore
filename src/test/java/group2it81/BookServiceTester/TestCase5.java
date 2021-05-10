@@ -13,13 +13,8 @@ public class TestCase5 {
     @Test
     public void test1(){
         BookService bs = new BookService();
-        List<Book> rsBooks = bs.searchBookByKeyWord("comedy");
+        List<Book> rsBooks = bs.searchBookByKeyWord("horor");
         assertTrue(rsBooks.size() > 0);
     }
-    @Test
-    public void test2(){
-        BookService bs = new BookService();
-        List<Book> rsBooks = bs.searchBookByKeyWord("");
-        assertTrue(rsBooks.size() == 0);
-    }
+    
 }

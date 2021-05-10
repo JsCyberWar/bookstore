@@ -45,9 +45,9 @@ public class BookService {
         }
     }
 
-    public List<Book> searchBookById(int id){
+    public List<Book> searchBookById(int string){
         try(Session session = HibernateUtils.getSessionFactory().openSession()){
-            String hql = String.format("FROM Book b WHERE b.id = %d", id);
+            String hql = String.format("FROM Book b WHERE b.id = %d", string);
             Query<Book> q = session.createQuery(hql);
             return q.list();
         }

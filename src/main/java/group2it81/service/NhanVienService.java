@@ -9,8 +9,9 @@ import org.hibernate.criterion.Criterion;
 import org.hibernate.Session;
 
 import group2it81.configs.HibernateUtils;
-import group2it81.pojo.NhanVien;   
+import group2it81.pojo.NhanVien;
 import group2it81.pojo.Role;
+import javassist.bytecode.stackmap.BasicBlock.Catch;
 
 public class NhanVienService {
     public List<NhanVien> searchNhanVien(String keyWord){
@@ -32,13 +33,30 @@ public class NhanVienService {
         }
     }
 
-    public void addNhanVien(NhanVien nhanVien) {
+    public boolean addNhanVien(NhanVien nhanVien) {
         try(Session session = HibernateUtils.getSessionFactory().openSession()){
             Role role = session.get(Role.class,3);
             session.getTransaction().begin();
             nhanVien.setRole(role);
             session.save(nhanVien);
             session.getTransaction().commit();
+            return true;
+        } catch (Exception ex){
+            return false;
         }
     }
+
+    public boolean xoaNhanVien(int idNhanVien){
+        try(Session session = HibernateUtils.getSessionFactory().openSession()){
+            session.getTransaction().begin();
+            NhanVien nhanVien = new NhanVien();
+            nhanVien = (NhanVien) session.get(NhanVien.class,idNhanVien);
+            session.delete(nhanVien);
+            session.getTransaction().commit();
+            return true;
+        } catch(Exception ex) {
+            return false;
+        }
+    }
+
 }

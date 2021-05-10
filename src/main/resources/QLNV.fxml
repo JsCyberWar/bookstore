@@ -104,11 +104,7 @@
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font></Label>
-                        <Button layoutX="442.0" layoutY="122.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#themNhanVien" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #FF6600;" text="Đăng kí" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font></Button>
-                        <Button layoutX="525.0" layoutY="122.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #FF6600;" text="Huỷ" textFill="WHITE">
+                        <Button layoutX="365.0" layoutY="118.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#themNhanVien" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #FF6600;" text="Đăng kí" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font></Button>
@@ -139,7 +135,7 @@
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <Button layoutX="14.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #FF6600;" text="Xoá" textFill="WHITE">
+            <Button layoutX="14.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#xoaNhanVien" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #FF6600;" text="Xoá" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
